@@ -9,11 +9,10 @@ var sidebar = L.control.sidebar({
 
 var panelContent = {
 		id: 'userinfo',                     // UID, used to access the panel
-		//tab: '<i class="fa fa-gear"></i>',  // content can be passed as HTML string,
-		tab: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+		tab: 'Lorem ipsum dolor sit amet',  // content can be passed as HTML string,
 		//pane: someDomNode.innerHTML,        // DOM elements can be passed, too
 		title: 'ContentPanel',              // an optional pane header
-		position: 'bottom'                  // optional vertical alignment, defaults to 'top'
+		position: 'top'                  // optional vertical alignment, defaults to 'top'
 };
 sidebar.addPanel(panelContent)
 
