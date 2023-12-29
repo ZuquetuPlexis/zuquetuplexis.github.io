@@ -11,7 +11,7 @@ var panelContent = {
 		id: 'bus_stop_quality',                     // UID, used to access the panel
 		tab: '<i class="bi bi-bus-front"></i>',  // content can be passed as HTML string,
 		//pane: someDomNode.innerHTML,        // DOM elements can be passed, too
-		pane: '<p>test</p>',        // DOM elements can be passed, too
+		pane: document.getElementsByClassName('leaflet-sidebar-content')[0].innerHTML = '<p>test</p>',        // DOM elements can be passed, too
 		title: 'Übersicht Qualität',              // an optional pane header
 		position: 'top'                  // optional vertical alignment, defaults to 'top'
 };
