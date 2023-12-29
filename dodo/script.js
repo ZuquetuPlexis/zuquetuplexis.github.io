@@ -17,9 +17,9 @@ var panelContent = {
 
 sidebar.addPanel(panelContent);
 
-sidebar.enablePanel('userinfo');
+//sidebar.enablePanel('userinfo');
 
-sidebar.open('userinfo');
+//sidebar.open('userinfo');
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
