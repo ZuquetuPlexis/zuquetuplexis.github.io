@@ -16,6 +16,8 @@ var panelContent = {
 };
 sidebar.addPanel(panelContent)
 
+panelContent.setContent("<p>test</p>");
+
 sidebar.enablePanel('userinfo');
 
 sidebar.open('userinfo');
