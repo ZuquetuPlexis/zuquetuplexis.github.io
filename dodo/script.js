@@ -9,7 +9,7 @@ var sidebar = L.control.sidebar({
 
 var panelContent = {
 		id: 'userinfo',                     // UID, used to access the panel
-		tab: '<i class="fa fa-gear"></i>',  // content can be passed as HTML string,
+		tab: '<i class="bi bi-gear"></i>',  // content can be passed as HTML string,
 		//pane: someDomNode.innerHTML,        // DOM elements can be passed, too
 		title: 'Title: Lorem',              // an optional pane header
 		position: 'top'                  // optional vertical alignment, defaults to 'top'
