@@ -14,9 +14,8 @@ var panelContent = {
 		title: 'Title: Lorem',              // an optional pane header
 		position: 'top'                  // optional vertical alignment, defaults to 'top'
 };
-sidebar.addPanel(panelContent)
 
-panelContent.setContent("<p>test</p>");
+sidebar.addPanel(panelContent);
 
 sidebar.enablePanel('userinfo');
 
