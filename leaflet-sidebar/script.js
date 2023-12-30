@@ -5,9 +5,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-var sidebar = L.control.sidebar('sidebar').addTo(map);
-
-/*
 var sidebar = L.control.sidebar({
 		autopan: false,
 		//closeButton: true,
@@ -15,7 +12,7 @@ var sidebar = L.control.sidebar({
 		position: 'left'
 }).addTo(map);
 
-var panelContent = {
+var panelBus = {
 	id: 'bus_stop_quality',
 	tab: 'LF',
 	pane: 'lf-sb',
@@ -23,7 +20,24 @@ var panelContent = {
 	position: 'top'
 };
 
-sidebar.addPanel(panelContent);
+var panelSetting = {
+	id: 'setting',
+	tab: 'stt',
+	pane: 'sttg',
+	title: 'setting stuff',
+	position: 'top'
+};
+
+var panelGit = {
+	id: 'git',
+	tab: 'git',
+	pane: 'git-hub',
+	title: 'git bits',
+	position: 'top'
+};
+
+sidebar.addPanel(panelBus);
+sidebar.addPanel(panelSetting);
+sidebar.addPanel(panelGit);
 sidebar.open('bus_stop_quality');
 sidebar.enablePanel('bus_stop_quality');
-*/
