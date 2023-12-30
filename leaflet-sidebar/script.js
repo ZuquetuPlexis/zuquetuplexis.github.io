@@ -9,7 +9,9 @@ var sidebar = L.control.sidebar({
 	autopan: false,
 	container: "sidebar",
 	position: "left"
-}).addTo(map).open('home');
+}).addTo(map);
+
+//sidebar.open('home');
 
 /*
 // add panels dynamically to the sidebar
