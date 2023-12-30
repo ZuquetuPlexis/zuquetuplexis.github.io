@@ -11,6 +11,7 @@ var sidebar = L.control.sidebar({
 	position: "left"
 }).addTo(map).open('home');
 
+/*
 // add panels dynamically to the sidebar
 sidebar
 		.addPanel({
@@ -48,3 +49,4 @@ function addUser() {
 				pane: '<p>user ipsum dolor sit amet</p>',
 		});
 }
+*/
