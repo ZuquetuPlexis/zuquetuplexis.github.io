@@ -65,12 +65,15 @@ var sidebar = L.control
   .addTo(map);
 
 //Render Layer Control & Move to Sidebar
-var layerControl = L.control
-  .layers(basemaps, overlays, {
+var layerControl = L.control.layers(
+	basemaps, 
+	overlays, 
+	{
     position: "topright",
     collapsed: false
   })
-  .addTo(map);
+	.addTo(map);
+
 var oldLayerControl = layerControl.getContainer();
 var newLayerControl = $("#layercontrol");
 newLayerControl.append(oldLayerControl);
