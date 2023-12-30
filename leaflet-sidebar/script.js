@@ -1,5 +1,10 @@
 var map = L.map('map').setView([52.53028, 13.79417], 13);
 
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
 var sidebar = L.control.sidebar({
 		autopan: false,       // whether to maintain the centered map point when opening the sidebar
 		closeButton: true,    // whether t add a close button to the panes
@@ -18,8 +23,3 @@ var panelContent = {
 sidebar.addPanel(panelContent);
 sidebar.open('bus_stop_quality');
 sidebar.enablePanel('bus_stop_quality');
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 19,
-		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
