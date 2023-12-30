@@ -39,5 +39,7 @@ var panelGit = {
 sidebar.addPanel(panelBus);
 sidebar.addPanel(panelSetting);
 sidebar.addPanel(panelGit);
+
 sidebar.open('bus_stop_quality');
-sidebar.enablePanel('bus_stop_quality');
+
+sidebar.addContent("test test test");
