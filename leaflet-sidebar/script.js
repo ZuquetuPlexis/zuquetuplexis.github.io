@@ -5,6 +5,9 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+var sidebar = L.control.sidebar('sidebar').addTo(map);
+
+/*
 var sidebar = L.control.sidebar({
 		autopan: false,
 		//closeButton: true,
@@ -23,3 +26,4 @@ var panelContent = {
 sidebar.addPanel(panelContent);
 sidebar.open('bus_stop_quality');
 sidebar.enablePanel('bus_stop_quality');
+*/
