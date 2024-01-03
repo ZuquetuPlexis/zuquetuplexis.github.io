@@ -55,6 +55,8 @@ var overlayMaps = {
 
 var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map)
 
+layerBusStopAll.addTo(map);
+
 var busIcon = L.divIcon({
 	html: '<i class="bi bi-bus-front-fill"></i>',
 	iconSize: [8, 8],
@@ -96,7 +98,6 @@ const busQualChart = new Chart('bus_stop_qual', {
 				borderWidth: 1
 			},
 			point: {
-				//pointStyle: 'rectRounded',
 				pointRadius: 4
 			}
 		},
