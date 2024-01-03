@@ -118,6 +118,8 @@ async function getBusStops() {
 
 	busQualChart.options.scales.r.max = nrOfBusStops;
 	busQualChart.update();
+
+	document.getElementById('max_bus_stops').innerHTML = nrOfBusStops;
 }
 
 getBusStops();
