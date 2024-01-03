@@ -14,46 +14,40 @@ var busIcon = L.divIcon({
 	className: 'busIcon'
 });
 
-// marker test
-//L.marker([52.53028, 13.79417], {icon: busIcon}).addTo(map);
 
+// ----- ----- -----
 // overpass api
+// ----- ----- -----
 
 const overpassURL = "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A25%5D%3B%28area%5B%22de%3Aamtlicher_gemeindeschluessel%22%3D%2212064380%22%5D-%3E.dodo%3Bnode%5Bhighway%3Dbus_stop%5D%28area.dodo%29%3B%29%3Bout%20geom%3B";
 
 async function getBusStops() {
 	const response = await fetch(overpassURL);
 	const busStops = await response.json();
-	//console.log(busStops);
-	//console.log(Object.keys(busStops));
-	//console.log(busStops.elements);
 
 	for (let i in busStops.elements) {
-		//console.log(busStops.elements[i]);
 		let node = busStops.elements[i];
+
 		if (node.type == "node") {
 			let popupText = '';
 
 			popupText += `name: ${node.tags.name ? node.tags.name : ''}<br>`;
-			popupText += `bench: ${node.tags.bench ? node.tags.bench : ''}<br>`;
-			popupText += `bin: ${node.tags.bin ? node.tags.bin : ''}<br>`;
-			popupText += `lit: ${node.tags.lit ? node.tags.lit : ''}<br>`;
-			popupText += `shelter: ${node.tags.shelter ? node.tags.shelter : ''}<br>`;
-			popupText += `tactile_paving: ${node.tags.tactile_paving ? node.tags.tactile_paving : ''}<br>`;
+			popupText += `sitzbank: ${node.tags.bench ? 'ja' : 'nein'}<br>`;
+			popupText += `mülleimer: ${node.tags.bin ? 'ja' : 'nein'}<br>`;
+			popupText += `beleuchtet: ${node.tags.lit ? 'ja' : 'nein'}<br>`;
+			popupText += `überdacht: ${node.tags.shelter ? 'ja' : 'nein'}<br>`;
+			popupText += `taktile oberfläche: ${node.tags.tactile_paving ? 'ja' : 'nein'}<br>`;
 			
-
 			L.marker([node.lat, node.lon], {icon: busIcon}).addTo(map).bindPopup(popupText);
 		}
 	}
-
-	//console.log(busStops.elements[0]);
-	//console.log(busStops.elements[0].id);
-	//console.log(busStops.elements[0].tags.lit);
 }
 
 getBusStops();
 
+// ----- ----- -----
 // chart js
+// ----- ----- -----
 const ctx = document.getElementById('bus_stop_qual');
 
 let chartData = {
