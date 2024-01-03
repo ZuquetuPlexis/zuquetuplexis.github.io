@@ -7,10 +7,11 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-var busIcon = L.icon({
+var busIcon = L.divIcon({
 	html: '<i class="bi bi-bus-front"></i>',
 	iconSize: [10, 10],
-	iconAnchor: [5, 0]
+	iconAnchor: [5, 5],
+	className: 'busIcon'
 });
 
 L.marker([52.53028, 13.79417], {icon: busIcon}).addTo(map);
