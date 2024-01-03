@@ -8,3 +8,7 @@ div.row {
   margin-bottom: 0px;
   margin-right: 0px;
 }
+
+#bus_stop_qual {
+  width: 100%;
+}
