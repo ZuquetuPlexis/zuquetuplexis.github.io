@@ -53,8 +53,12 @@ const chartData = {
 		'Überdachung'
 	],
 	datasets: [{
-		label: 'Bus Stop Qual',
+		label: 'Bus Stop Qual - ALL',
 		data: [1, 1, 1, 1, 1],
+		fill: true
+	}, {
+		label: 'Bus Stop Qual - Select',
+		data: [1, 0, 1, 0, 1],
 		fill: true
 	}]
 };
