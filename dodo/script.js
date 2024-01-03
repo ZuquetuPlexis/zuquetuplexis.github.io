@@ -26,6 +26,8 @@ async function getBusStops() {
 	console.log(busStops);
 
 	console.log(Object.keys(busStops));
+
+	console.log(busStops.elements);
 }
 
 getBusStops();
