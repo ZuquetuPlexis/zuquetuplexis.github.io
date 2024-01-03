@@ -59,8 +59,8 @@ const chartData = {
 	}]
 };
 
-const busQualChart = new Chart("myChart", {
-  type: "radar",
+const busQualChart = new Chart('bus_stop_qual', {
+  type: 'radar',
   data: chartData,
   options: {
 		elements: {
