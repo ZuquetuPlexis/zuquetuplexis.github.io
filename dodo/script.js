@@ -38,14 +38,14 @@ const ctx = document.getElementById('bus_stop_qual');
 let chartData = {
 	labels: [
 		'Sitzbank',
-		'Beleuchtung',
 		'Mülleimer',
-		'taktile Oberfläche',
-		'Überdachung'
+		'Beleuchtung',
+		'Überdachung',
+		'taktile Oberfläche'
 	],
 	datasets: [{
-		label: 'Durchschnitt',
-		data: [1, 1, 1, 1, 1],
+		label: 'Alle Haltestellen',
+		data: [0, 0, 0, 0, 0],
 		fill: true
 	}, {
 		label: 'Selektion',
@@ -74,17 +74,23 @@ const overpassURL = "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%
 
 function updateBusChart(nodeTags) {
 	console.log(chartData.datasets[0].data);
+
+	if(nodeTags.bench == 'yes') {chartData.datasets[0].data[0] += 1;}
+	if(nodeTags.bin == 'yes') {chartData.datasets[0].data[1] += 1;}
+	if(nodeTags.lit == 'yes') {chartData.datasets[0].data[2] += 1;}
+	if(nodeTags.shelter == 'yes') {chartData.datasets[0].data[3] += 1;}
+	if(nodeTags.tactile_paving == 'yes') {chartData.datasets[0].data[4] += 1;}
 }
 
 function nodePopupText(nodeTags) {
 	let popupText = '';
 
 	popupText += `name: ${nodeTags.name ? nodeTags.name : ''}<br>`;
-	popupText += `sitzbank: ${nodeTags.bench ? translate(nodeTags.bench) : ''}<br>`;
-	popupText += `mülleimer: ${nodeTags.bin ? translate(nodeTags.bin) : ''}<br>`;
-	popupText += `beleuchtet: ${nodeTags.lit ? translate(nodeTags.lit) : ''}<br>`;
-	popupText += `überdacht: ${nodeTags.shelter ? translate(nodeTags.shelter) : ''}<br>`;
-	popupText += `taktile oberfläche: ${nodeTags.tactile_paving ? translate(nodeTags.tactile_paving) : ''}`;
+	popupText += `sitzbank: ${nodeTags.bench ? translate(nodeTags.bench) : 'nein'}<br>`;
+	popupText += `mülleimer: ${nodeTags.bin ? translate(nodeTags.bin) : 'nein'}<br>`;
+	popupText += `beleuchtet: ${nodeTags.lit ? translate(nodeTags.lit) : 'nein'}<br>`;
+	popupText += `überdacht: ${nodeTags.shelter ? translate(nodeTags.shelter) : 'nein'}<br>`;
+	popupText += `taktile oberfläche: ${nodeTags.tactile_paving ? translate(nodeTags.tactile_paving) : 'nein'}`;
 
 	return popupText;
 }
