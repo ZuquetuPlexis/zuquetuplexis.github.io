@@ -116,7 +116,7 @@ async function getBusStops() {
 		busChartAddData(node.tags);
 	}
 
-	chartData.options.scales.x.max = nrOfBusStops;
+	chartData.options.scales.r.max = nrOfBusStops;
 	busQualChart.update();
 }
 
