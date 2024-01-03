@@ -25,7 +25,7 @@ async function getBusStops() {
 	const busStops = await response.json();
 	console.log(busStops);
 
-	console.log(busStops[elements][0]);
+	console.log(Object.keys(busStops));
 }
 
 getBusStops();
