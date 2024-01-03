@@ -77,12 +77,12 @@ const busQualChart = new Chart('bus_stop_qual', {
 
 const overpassURL = "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A25%5D%3B%28area%5B%22de%3Aamtlicher_gemeindeschluessel%22%3D%2212064380%22%5D-%3E.dodo%3Bnode%5Bhighway%3Dbus_stop%5D%28area.dodo%29%3B%29%3Bout%20geom%3B";
 
-function busChartAddData(nodeTags) {
-	if(nodeTags.bench == 'yes') {chartData.datasets[0].data[0] += 1;}
-	if(nodeTags.bin == 'yes') {chartData.datasets[0].data[1] += 1;}
-	if(nodeTags.lit == 'yes') {chartData.datasets[0].data[2] += 1;}
-	if(nodeTags.shelter == 'yes') {chartData.datasets[0].data[3] += 1;}
-	if(nodeTags.tactile_paving == 'yes') {chartData.datasets[0].data[4] += 1;}
+function busChartAddData(nodeTags, chartData, datasetNr) {
+	if(nodeTags.bench == 'yes') {chartData.datasets[datasetNr].data[0] += 1;}
+	if(nodeTags.bin == 'yes') {chartData.datasets[datasetNr].data[1] += 1;}
+	if(nodeTags.lit == 'yes') {chartData.datasets[datasetNr].data[2] += 1;}
+	if(nodeTags.shelter == 'yes') {chartData.datasets[datasetNr].data[3] += 1;}
+	if(nodeTags.tactile_paving == 'yes') {chartData.datasets[datasetNr].data[4] += 1;}
 }
 
 function nodePopupText(nodeTags) {
@@ -113,10 +113,10 @@ async function getBusStops() {
 			nrOfBusStops++;
 		}
 
-		busChartAddData(node.tags);
+		busChartAddData(node.tags, chartData, 0);
 	}
 
-	chartData.options.scales.r.max = nrOfBusStops;
+	busQualChart.options.scales.r.max = nrOfBusStops;
 	busQualChart.update();
 }
 
