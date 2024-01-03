@@ -34,12 +34,12 @@ async function getBusStops() {
 		if (node.type == "node") {
 			let popupText = '';
 
-			popupText += `name: ${node.tags.name ? node.tags.name : ''}\n`;
-			popupText += `bench: ${node.tags.bench ? node.tags.bench : ''}\n`;
-			popupText += `bin: ${node.tags.bin ? node.tags.bin : ''}\n`;
-			popupText += `lit: ${node.tags.lit ? node.tags.lit : ''}\n`;
-			popupText += `shelter: ${node.tags.shelter ? node.tags.shelter : ''}\n`;
-			popupText += `tactile_paving: ${node.tags.tactile_paving ? node.tags.tactile_paving : ''}\n`;
+			popupText += `name: ${node.tags.name ? node.tags.name : ''}<br>`;
+			popupText += `bench: ${node.tags.bench ? node.tags.bench : ''}<br>`;
+			popupText += `bin: ${node.tags.bin ? node.tags.bin : ''}<br>`;
+			popupText += `lit: ${node.tags.lit ? node.tags.lit : ''}<br>`;
+			popupText += `shelter: ${node.tags.shelter ? node.tags.shelter : ''}<br>`;
+			popupText += `tactile_paving: ${node.tags.tactile_paving ? node.tags.tactile_paving : ''}<br>`;
 			
 
 			L.marker([node.lat, node.lon], {icon: busIcon}).addTo(map).bindPopup(popupText);
