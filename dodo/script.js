@@ -23,8 +23,7 @@ const overpassURL = "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%
 async function getBusStops() {
 	const response = await fetch(overpassURL);
 	const busStops = await response.json();
-	console.log(busStops);
-
+	//console.log(busStops);
 	//console.log(Object.keys(busStops));
 	//console.log(busStops.elements);
 
@@ -41,3 +40,28 @@ async function getBusStops() {
 }
 
 getBusStops();
+
+// chart js
+const ctx = document.getElementById('bus_stop_qual');
+
+const chartData = {
+	labels: [
+		'Sitzbank',
+		'Beleuchtung',
+		'Mülleimer',
+		'taktile Oberfläche',
+		'Überdachung'
+	]
+};
+
+const busQualChart = new Chart("myChart", {
+  type: "radar",
+  data: chartData,
+  options: {
+		elements: {
+			line: {
+				borderWidth: 3
+			}
+		}
+	}
+});
