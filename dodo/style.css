@@ -2,7 +2,9 @@
   height: 600px;
 }
 
-.row {
+div.row {
+  margin-top: 0px;
   margin-left: 0px;
+  margin-bottom: 0px;
   margin-right: 0px;
 }
