@@ -64,7 +64,9 @@ const busQualChart = new Chart('bus_stop_qual', {
 			}
 		},
 		scales: {
-			max: 10
+			x: {
+				max: 10
+			}
 		}
 	}
 });
@@ -114,7 +116,7 @@ async function getBusStops() {
 		busChartAddData(node.tags);
 	}
 
-	chartData.options.scales.max = nrOfBusStops;
+	chartData.options.scales.x.max = nrOfBusStops;
 	busQualChart.update();
 }
 
