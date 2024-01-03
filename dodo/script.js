@@ -56,13 +56,15 @@ let chartData = {
 
 const busQualChart = new Chart('bus_stop_qual', {
   type: 'radar',
-	max: 50,
   data: chartData,
   options: {
 		elements: {
 			line: {
 				borderWidth: 3
 			}
+		},
+		scales: {
+			max: 10
 		}
 	}
 });
@@ -74,8 +76,6 @@ const busQualChart = new Chart('bus_stop_qual', {
 const overpassURL = "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A25%5D%3B%28area%5B%22de%3Aamtlicher_gemeindeschluessel%22%3D%2212064380%22%5D-%3E.dodo%3Bnode%5Bhighway%3Dbus_stop%5D%28area.dodo%29%3B%29%3Bout%20geom%3B";
 
 function busChartAddData(nodeTags) {
-	console.log(chartData.datasets[0].data);
-
 	if(nodeTags.bench == 'yes') {chartData.datasets[0].data[0] += 1;}
 	if(nodeTags.bin == 'yes') {chartData.datasets[0].data[1] += 1;}
 	if(nodeTags.lit == 'yes') {chartData.datasets[0].data[2] += 1;}
@@ -87,11 +87,11 @@ function nodePopupText(nodeTags) {
 	let popupText = '';
 
 	popupText += `name: ${nodeTags.name ? nodeTags.name : ''}<br>`;
-	popupText += `sitzbank: ${nodeTags.bench ? translate(nodeTags.bench) : 'nein'}<br>`;
-	popupText += `mülleimer: ${nodeTags.bin ? translate(nodeTags.bin) : 'nein'}<br>`;
-	popupText += `beleuchtet: ${nodeTags.lit ? translate(nodeTags.lit) : 'nein'}<br>`;
-	popupText += `überdacht: ${nodeTags.shelter ? translate(nodeTags.shelter) : 'nein'}<br>`;
-	popupText += `taktile oberfläche: ${nodeTags.tactile_paving ? translate(nodeTags.tactile_paving) : 'nein'}`;
+	popupText += `sitzbank: ${nodeTags.bench ? translate(nodeTags.bench) : 'unbekannt'}<br>`;
+	popupText += `mülleimer: ${nodeTags.bin ? translate(nodeTags.bin) : 'unbekannt'}<br>`;
+	popupText += `beleuchtet: ${nodeTags.lit ? translate(nodeTags.lit) : 'unbekannt'}<br>`;
+	popupText += `überdacht: ${nodeTags.shelter ? translate(nodeTags.shelter) : 'unbekannt'}<br>`;
+	popupText += `taktile oberfläche: ${nodeTags.tactile_paving ? translate(nodeTags.tactile_paving) : 'unbekannt'}`;
 
 	return popupText;
 }
@@ -114,7 +114,7 @@ async function getBusStops() {
 		busChartAddData(node.tags);
 	}
 
-	chartData.max = nrOfBusStops;
+	chartData.options.scales.max = nrOfBusStops;
 	busQualChart.update();
 }
 
