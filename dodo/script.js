@@ -14,7 +14,8 @@ var busIcon = L.divIcon({
 	className: 'busIcon'
 });
 
-L.marker([52.53028, 13.79417], {icon: busIcon}).addTo(map);
+// marker test
+//L.marker([52.53028, 13.79417], {icon: busIcon}).addTo(map);
 
 // overpass api
 
@@ -29,8 +30,14 @@ async function getBusStops() {
 
 	for (let i in busStops.elements) {
 		//console.log(busStops.elements[i]);
-		if (busStops.elements[i].type == "node") {
-			L.marker([busStops.elements[i].lat, busStops.elements[i].lon], {icon: busIcon}).addTo(map);
+		let node = busStops.elements[i];
+		if (node.type == "node") {
+			let popupText = '';
+
+			popupText += `name: ${node.tags.name ? node.tags.name : ''}\n`;
+			
+
+			L.marker([node.lat, node.lon], {icon: busIcon}).addTo(map).bindPopup(popupText);
 		}
 	}
 
@@ -44,7 +51,7 @@ getBusStops();
 // chart js
 const ctx = document.getElementById('bus_stop_qual');
 
-const chartData = {
+let chartData = {
 	labels: [
 		'Sitzbank',
 		'Beleuchtung',
@@ -53,12 +60,12 @@ const chartData = {
 		'Überdachung'
 	],
 	datasets: [{
-		label: 'Bus Stop Qual - ALL',
+		label: 'Durchschnitt',
 		data: [1, 1, 1, 1, 1],
 		fill: true
 	}, {
-		label: 'Bus Stop Qual - Select',
-		data: [1, 0, 1, 0, 1],
+		label: 'Selektion',
+		data: [0, 0, 0, 0, 0],
 		fill: true
 	}]
 };
