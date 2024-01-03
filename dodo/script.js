@@ -1,4 +1,19 @@
+// general
+
+function translate(text) {
+	switch (text) {
+		case 'yes':
+			return 'ja';
+		case 'no':
+			return 'nein';
+		default:
+			return '';
+	}
+}
+
+// ----- ----- -----
 // Leaflet
+// ----- ----- -----
 
 var map = L.map('map').setView([52.53028, 13.79417], 13);
 
@@ -17,6 +32,7 @@ var busIcon = L.divIcon({
 // ----- ----- -----
 // chart js
 // ----- ----- -----
+
 const ctx = document.getElementById('bus_stop_qual');
 
 let chartData = {
@@ -64,11 +80,11 @@ function nodePopupText(nodeTags) {
 	let popupText = '';
 
 	popupText += `name: ${nodeTags.name ? nodeTags.name : ''}<br>`;
-	popupText += `sitzbank: ${nodeTags.bench ? 'ja' : 'nein'}<br>`;
-	popupText += `mülleimer: ${nodeTags.bin ? 'ja' : 'nein'}<br>`;
-	popupText += `beleuchtet: ${nodeTags.lit ? 'ja' : 'nein'}<br>`;
-	popupText += `überdacht: ${nodeTags.shelter ? 'ja' : 'nein'}<br>`;
-	popupText += `taktile oberfläche: ${nodeTags.tactile_paving ? 'ja' : 'nein'}`;
+	popupText += `sitzbank: ${nodeTags.bench ? translate(nodeTags.bench) : ''}<br>`;
+	popupText += `mülleimer: ${nodeTags.bin ? translate(nodeTags.bin) : ''}<br>`;
+	popupText += `beleuchtet: ${nodeTags.lit ? translate(nodeTags.lit) : ''}<br>`;
+	popupText += `überdacht: ${nodeTags.shelter ? translate(nodeTags.shelter) : ''}<br>`;
+	popupText += `taktile oberfläche: ${nodeTags.tactile_paving ? translate(nodeTags.tactile_paving) : ''}`;
 
 	return popupText;
 }
