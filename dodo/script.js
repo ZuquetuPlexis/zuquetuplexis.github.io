@@ -15,12 +15,45 @@ function translate(text) {
 // Leaflet
 // ----- ----- -----
 
-var map = L.map('map').setView([52.53028, 13.79417], 13);
+var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+});
 
+var layerBusStopAll = L.layerGroup([]);
+var layerBusStopBench = L.layerGroup([]);
+var layerBusStopBin = L.layerGroup([]);
+var layerBusStopLit = L.layerGroup([]);
+var layerBusStopShelter = L.layerGroup([]);
+var layerBusStopTactile = L.layerGroup([]);
+
+/*
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
 		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+*/
+
+var map = L.map('map', {
+	center: [52.53028, 13.79417],
+	zoom: 13,
+	layers: [osm]
+});
+
+var baseMaps = {
+	"OpenStreetMap": osm
+};
+
+var overlayMaps = {
+	"Alle Bushaltestellen": layerBusStopAll,
+	"Sitzbank": layerBusStopBench,
+	"Mülleimer": layerBusStopBin,
+	"Beleuchtung": layerBusStopLit,
+	"Überdachung": layerBusStopShelter,
+	"taktile Oberfläche": layerBusStopTactile
+}
+
+var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map)
 
 var busIcon = L.divIcon({
 	html: '<i class="bi bi-bus-front-fill"></i>',
@@ -60,7 +93,11 @@ const busQualChart = new Chart('bus_stop_qual', {
   options: {
 		elements: {
 			line: {
-				borderWidth: 3
+				borderWidth: 1
+			},
+			point: {
+				//pointStyle: 'rectRounded',
+				pointRadius: 4
 			}
 		},
 		scales: {
@@ -108,7 +145,7 @@ async function getBusStops() {
 		let node = busStops.elements[i];
 
 		if (node.type == "node") {
-			L.marker([node.lat, node.lon], {icon: busIcon}).addTo(map).bindPopup(nodePopupText(node.tags));
+			L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopAll).bindPopup(nodePopupText(node.tags));
 
 			nrOfBusStops++;
 		}
