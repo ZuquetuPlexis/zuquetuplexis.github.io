@@ -9,8 +9,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var busIcon = L.divIcon({
 	html: '<i class="bi bi-bus-front"></i>',
-	iconSize: [10, 10],
-	iconAnchor: [5, 5],
+	iconSize: [8, 8],
+	iconAnchor: [4, 4],
 	className: 'busIcon'
 });
 
@@ -25,15 +25,19 @@ async function getBusStops() {
 	const busStops = await response.json();
 	console.log(busStops);
 
-	console.log(Object.keys(busStops));
+	//console.log(Object.keys(busStops));
+	//console.log(busStops.elements);
 
-	console.log(busStops.elements);
+	for (let i in busStops.elements) {
+		//console.log(busStops.elements[i]);
+		if (busStops.elements[i].type == "node") {
+			L.marker([busStops.elements[i].lat, busStops.elements[i].lon], {icon: busIcon}).addTo(map);
+		}
+	}
 
-	console.log(busStops.elements[0]);
-
-	console.log(busStops.elements[0].id);
-
-	console.log(busStops.elements[0].tags.lit);
+	//console.log(busStops.elements[0]);
+	//console.log(busStops.elements[0].id);
+	//console.log(busStops.elements[0].tags.lit);
 }
 
 getBusStops();
