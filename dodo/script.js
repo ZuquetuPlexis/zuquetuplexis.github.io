@@ -28,6 +28,12 @@ async function getBusStops() {
 	console.log(Object.keys(busStops));
 
 	console.log(busStops.elements);
+
+	console.log(busStops.elements[0]);
+
+	console.log(busStops.elements[0].id);
+
+	console.log(busStops.elements[0].tags.lit);
 }
 
 getBusStops();
