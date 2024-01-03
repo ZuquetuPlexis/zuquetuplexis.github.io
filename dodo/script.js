@@ -51,7 +51,12 @@ const chartData = {
 		'Mülleimer',
 		'taktile Oberfläche',
 		'Überdachung'
-	]
+	],
+	datasets: [{
+		label: 'Bus Stop Qual',
+		data: [1, 1, 1, 1, 1],
+		fill: true
+	}]
 };
 
 const busQualChart = new Chart("myChart", {
