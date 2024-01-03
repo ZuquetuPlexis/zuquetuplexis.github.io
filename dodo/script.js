@@ -64,7 +64,7 @@ const busQualChart = new Chart('bus_stop_qual', {
 			}
 		},
 		scales: {
-			x: {
+			r: {
 				max: 10
 			}
 		}
