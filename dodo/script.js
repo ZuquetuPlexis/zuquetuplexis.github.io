@@ -23,7 +23,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 var busIcon = L.divIcon({
-	html: '<i class="bi bi-bus-front"></i>',
+	html: '<i class="bi bi-bus-front-fill"></i>',
 	iconSize: [8, 8],
 	iconAnchor: [4, 4],
 	className: 'busIcon'
