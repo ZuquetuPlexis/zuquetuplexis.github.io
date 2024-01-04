@@ -108,12 +108,16 @@ const busQualChart = new Chart('bus_stop_qual', {
 				borderWidth: 1
 			},
 			point: {
-				pointRadius: 4
+				pointRadius: 6,
+				pointHoverRadius: 6
 			}
 		},
 		scales: {
 			r: {
 				//max: 10
+				ticks: {
+					stepSize: 5
+				}
 			}
 		}
 	}
