@@ -136,16 +136,16 @@ function busChartAddData(nodeTags, chartData, datasetNr) {
 
 	let tags = ['bench', 'bin', 'lit', 'shelter', 'tactile_paving'];
 
-	tags.forEach((value, index, array) => {
-		switch (nodeTags[value]) {
+	tags.forEach((tag, index) => {
+		switch (nodeTags[tag]) {
 			case 'yes':
-				chartData.datasets[index].data[index] += 1;
+				chartData.datasets[datasetNr].data[index] += 1;
 				break;
 			case 'no':
-				chartData.datasets[index].data[index] += 1;
+				chartData.datasets[datasetNr+1].data[index] += 1;
 				break;
 			default:
-				chartData.datasets[index].data[index] += 1;
+				chartData.datasets[datasetNr+2].data[index] += 1;
 				break;
 		}
 	});
