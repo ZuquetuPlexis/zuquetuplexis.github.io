@@ -142,10 +142,10 @@ function busChartAddData(nodeTags, chartData, datasetNr) {
 				chartData.datasets[index].data[index] += 1;
 				break;
 			case 'no':
-				chartData.datasets[(index+1)].data[index] += 1;
+				chartData.datasets[index].data[index] += 1;
 				break;
 			default:
-				chartData.datasets[(index+2)].data[index] += 1;
+				chartData.datasets[index].data[index] += 1;
 				break;
 		}
 	});
