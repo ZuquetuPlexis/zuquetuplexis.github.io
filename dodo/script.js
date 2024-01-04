@@ -138,7 +138,7 @@ function busChartAddData(nodeTags, chartData, datasetNr) {
 	let tags = {'bench', 'bin', 'lit', 'shelter', 'tactile_paving'}
 	*/
 
-	console.log(node['bench']);
+	console.log(nodeTags['bench']);
 
 	switch (nodeTags.bench) {
 		case 'yes':
