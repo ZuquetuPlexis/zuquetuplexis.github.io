@@ -134,12 +134,24 @@ function busChartAddData(nodeTags, chartData, datasetNr) {
 	if(nodeTags.tactile_paving == 'yes') {chartData.datasets[datasetNr].data[4] += 1;}
 	*/
 
+	let tags = ['bench', 'bin', 'lit', 'shelter', 'tactile_paving'];
+
+	tags.forEach((value, index, array) => {
+		switch (nodeTags[value]) {
+			case 'yes':
+				chartData.datasets[index].data[index] += 1;
+				break;
+			case 'no':
+				chartData.datasets[index+1].data[index] += 1;
+				break;
+			default:
+				chartData.datasets[index+2].data[index] += 1;
+				break;
+		}
+	});
+
+	//console.log(nodeTags['bench']);
 	/*
-	let tags = {'bench', 'bin', 'lit', 'shelter', 'tactile_paving'}
-	*/
-
-	console.log(nodeTags['bench']);
-
 	switch (nodeTags.bench) {
 		case 'yes':
 			chartData.datasets[datasetNr].data[0] += 1;
@@ -199,6 +211,7 @@ function busChartAddData(nodeTags, chartData, datasetNr) {
 			chartData.datasets[datasetNr+2].data[4] += 1;
 			break;
 	}
+	*/
 }
 
 function nodePopupText(nodeTags) {
@@ -266,7 +279,7 @@ async function getBusStops() {
 		zeroComfort = true;
 	}
 
-	busQualChart.options.scales.r.max = nrOfBusStops;
+	//busQualChart.options.scales.r.max = nrOfBusStops;
 	busQualChart.update();
 
 	document.getElementById('max_bus_stops').innerHTML = nrOfBusStops;
