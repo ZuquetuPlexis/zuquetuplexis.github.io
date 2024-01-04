@@ -26,6 +26,7 @@ var layerBusStopBin = L.layerGroup([]);
 var layerBusStopLit = L.layerGroup([]);
 var layerBusStopShelter = L.layerGroup([]);
 var layerBusStopTactile = L.layerGroup([]);
+var layerBusStopNothing = L.layerGroup([]);
 
 /*
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -50,7 +51,8 @@ var overlayMaps = {
 	"Mülleimer": layerBusStopBin,
 	"Beleuchtung": layerBusStopLit,
 	"Überdachung": layerBusStopShelter,
-	"taktile Oberfläche": layerBusStopTactile
+	"taktile Oberfläche": layerBusStopTactile,
+	"Haltestelle": layerBusStopNothing
 }
 
 var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map)
@@ -141,6 +143,8 @@ async function getBusStops() {
 	const busStops = await response.json();
 
 	let nrOfBusStops = 0;
+	let nrOfBusStopsZeroComfort = 0;
+	let ZeroComfort = true;
 
 	for (let i in busStops.elements) {
 		let node = busStops.elements[i];
@@ -149,6 +153,36 @@ async function getBusStops() {
 			L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopAll).bindPopup(nodePopupText(node.tags));
 
 			nrOfBusStops++;
+
+			if (node.tags.bench == 'yes') {
+				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopBench).bindPopup(nodePopupText(node.tags));
+				ZeroComfort = false;
+			}
+
+			if (node.tags.bin == 'yes') {
+				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopBin).bindPopup(nodePopupText(node.tags));
+				ZeroComfort = false;
+			}
+
+			if (node.tags.lit == 'yes') {
+				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopLit).bindPopup(nodePopupText(node.tags));
+				ZeroComfort = false;
+			}
+
+			if (node.tags.shelter == 'yes') {
+				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopShelter).bindPopup(nodePopupText(node.tags));
+				ZeroComfort = false;
+			}
+
+			if (node.tags.tactile_paving == 'yes') {
+				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopTactile).bindPopup(nodePopupText(node.tags));
+				ZeroComfort = false;
+			}
+
+			if (ZeroComfort) {
+				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopNothing).bindPopup(nodePopupText(node.tags));
+				nrOfBusStopsZeroComfort++;
+			}
 		}
 
 		busChartAddData(node.tags, chartData, 0);
@@ -158,6 +192,7 @@ async function getBusStops() {
 	busQualChart.update();
 
 	document.getElementById('max_bus_stops').innerHTML = nrOfBusStops;
+	document.getElementById('bus_stops_no_comfort').innerHTML = nrOfBusStopsZeroComfort;
 }
 
 getBusStops();
