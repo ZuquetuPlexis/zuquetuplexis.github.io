@@ -144,7 +144,7 @@ async function getBusStops() {
 
 	let nrOfBusStops = 0;
 	let nrOfBusStopsZeroComfort = 0;
-	let ZeroComfort = true;
+	let zeroComfort = true;
 
 	for (let i in busStops.elements) {
 		let node = busStops.elements[i];
@@ -156,36 +156,38 @@ async function getBusStops() {
 
 			if (node.tags.bench == 'yes') {
 				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopBench).bindPopup(nodePopupText(node.tags));
-				ZeroComfort = false;
+				zeroComfort = false;
 			}
 
 			if (node.tags.bin == 'yes') {
 				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopBin).bindPopup(nodePopupText(node.tags));
-				ZeroComfort = false;
+				zeroComfort = false;
 			}
 
 			if (node.tags.lit == 'yes') {
 				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopLit).bindPopup(nodePopupText(node.tags));
-				ZeroComfort = false;
+				zeroComfort = false;
 			}
 
 			if (node.tags.shelter == 'yes') {
 				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopShelter).bindPopup(nodePopupText(node.tags));
-				ZeroComfort = false;
+				zeroComfort = false;
 			}
 
 			if (node.tags.tactile_paving == 'yes') {
 				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopTactile).bindPopup(nodePopupText(node.tags));
-				ZeroComfort = false;
+				zeroComfort = false;
 			}
 
-			if (ZeroComfort) {
+			if (zeroComfort) {
 				L.marker([node.lat, node.lon], {icon: busIcon}).addTo(layerBusStopNothing).bindPopup(nodePopupText(node.tags));
 				nrOfBusStopsZeroComfort++;
 			}
 		}
 
 		busChartAddData(node.tags, chartData, 0);
+		// reset comfort
+		zeroComfort = true;
 	}
 
 	busQualChart.options.scales.r.max = nrOfBusStops;
