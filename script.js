@@ -4,15 +4,15 @@ var websites = {
     "sites": [
       {
         "name": "Qualität der Bushaltestellen",
-        "url": "dodo/dodo_bus_stop_quality.html"
+        "url": "dodo/bus_stop_quality/dodo_bus_stop_quality.html"
       },
       {
         "name": "Sattelfest 2023",
-        "url": "dodo/sattelfest_2023.html"
+        "url": "dodo/sattelfest/sattelfest_2023.html"
       },
       {
         "name": "Sattelfest 2024",
-        "url": "dodo/sattelfest_2024.html"
+        "url": "dodo/sattelfest/sattelfest_2024.html"
       }
     ]
   },
