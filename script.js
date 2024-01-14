@@ -1,8 +1,9 @@
 var websites = {
   "dodo": {
+    "name": "Doppeldorf - Petershagen/Eggersdorf",
     "sites": [
       {
-        "name": "Petershagen/Eggersdorf - Qualität der Bushaltestellen",
+        "name": "Qualität der Bushaltestellen",
         "url": "dodo/dodo_bus_stop_quality.html"
       },
       {
@@ -32,8 +33,6 @@ var websites = {
 };
 
 let div_website_overview = document.getElementById("website_overview");
-
-//let entry_prototyp = `<a href="${url}" class="list-group-item list-group-item-action">${name}</a>`;
 
 Object.keys(websites).forEach((item, index, arr) => {
   let sites = websites[item]["sites"];
