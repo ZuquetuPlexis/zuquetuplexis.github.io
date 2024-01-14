@@ -1,0 +1,14 @@
+#map {
+  height: 600px;
+}
+
+div.row {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+}
+
+#bus_stop_qual {
+  width: 100%;
+}
