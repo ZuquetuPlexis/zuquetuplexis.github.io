@@ -48,7 +48,7 @@ var noticeIconWorkedOn = L.divIcon({
 });
 
 // maerker 'api'
-
+/*
 var maerkerURL = "https://maerker.brandenburg.de/sixcms/list.php?page=kml_meldungen_p&sv[kommune]=177&sv[status]=online&sv[kat]=&sv[id]=&sv[vt]=&sv[rel_status]=11,12,13,14,15";
 
 async function getNotices() {
@@ -69,3 +69,4 @@ fetch("https://maerker.brandenburg.de/sixcms/list.php?page=kml_meldungen_p&sv[ko
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
+*/
