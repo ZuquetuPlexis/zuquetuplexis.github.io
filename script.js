@@ -29,6 +29,14 @@ var websites = {
   },
   "sattelfest": {
     "sites": []
+  },
+  "maerker": {
+    "sites": [
+      {
+        "name": "Maerker Brandenburg Viewer",
+        "url": "maerker/maerker.html"
+      }
+    ]
   }
 };
 
@@ -45,3 +53,31 @@ Object.keys(websites).forEach((item, index, arr) => {
     });
   }
 });
+
+/*
+function createDropdownLinkMenuHTML(menuName,linkDict) {
+  var menu = document.createElement("div");
+  menu.classList.add("dropdown");
+
+  var menuHeader = document.createElement("a");
+  menuHeader.classList.add("btn");
+  menuHeader.classList.add("btn-secondary");
+  menuHeader.classList.add("dropdown-toggle");
+
+  menuHeader.innerHTML = menuName;
+
+  menu.append(menuHeader);
+
+
+  let menu = `
+  <div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">${menuName}</a>
+
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>`;
+}
+*/
