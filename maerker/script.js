@@ -46,3 +46,16 @@ var noticeIconWorkedOn = L.divIcon({
 	iconAnchor: [4, 4],
 	className: 'workedOnIcon'
 });
+
+// maerker 'api'
+
+var maerkerURL = "https://maerker.brandenburg.de/sixcms/list.php?page=kml_meldungen_p&sv[kommune]=177&sv[status]=online&sv[kat]=&sv[id]=&sv[vt]=&sv[rel_status]=11,12,13,14,15";
+
+async function getNotices() {
+	const response = await fetch(maerkerURL);
+	const notices = await response.text();
+
+	console.log(notices);
+}
+
+getNotices();
